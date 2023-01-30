@@ -1,0 +1,15 @@
+---
+- name: AWS SSM Playbook Demo
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: "Install packages..."
+      ansible.builtin.apt:
+        name: [figlet, htop, apt-transport-https, ca-certificates, curl, wget, software-properties-common]
+        state: latest
+      register: pkg_result
+    - name: "installing packages finished"
+      ansible.builtin.shell: >
+        echo "installing packages via ansible via aws ssm finished! :) ..."
